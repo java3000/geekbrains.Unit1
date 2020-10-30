@@ -32,25 +32,20 @@ public class Main {
         Scanner choice = new Scanner(System.in);
 
         //запустить игру
-        switch (choice.nextInt()){
-            case 1:
-            {
+        switch (choice.nextInt()) {
+            case 1 -> {
                 startGuessNumberGame(10, 3);
                 break;
             }
-
-            case 2:
-            {
+            case 2 -> {
                 startWordGuessGame();
+
+                //второй вариант игры
+                //startWordGuessGame2();
                 break;
             }
-            default:
-                System.out.println("Увидимся в следующий раз");
-
+            default -> System.out.println("Увидимся в следующий раз");
         }
-
-
-        //заново.
     }
 
     private static void startGuessNumberGame(int seed, int count) {
@@ -111,7 +106,6 @@ public class Main {
 
         System.out.printf(greetingString, word.length());
 
-
         do {
             choice = input.next();
             if (!word.equals(choice)) {
@@ -132,15 +126,68 @@ public class Main {
                 }
 
                 //дополняем строку для секретности
-                for (int i = 0; i < 15 - word.length(); i++) {
-                    sb.append("#");
-                }
+                sb.append("#".repeat(15 - word.length()));
 
                 //проверка, угадали ли мы хоть что-нибудь или все состоит их "#"
-                if (!sb.toString().matches("[#]+")){
+                if (!sb.toString().matches("[#]+")) {
                     System.out.printf(someLettersString, sb.toString());
+                } else {
+                    System.out.println(noLettersString);
                 }
-                else {
+
+            } else {
+                System.out.println(winString);
+                input.close();
+                break;
+            }
+        } while (true);
+    }
+
+    private static void startWordGuessGame2() {
+
+        String[] words = {"apple", "orange", "lemon", "banana", "apricot",
+                "avocado", "broccoli", "carrot", "cherry", "garlic",
+                "grape", "melon", "leak", "kiwi", "mango",
+                "mushroom", "nut", "olive", "pea", "peanut",
+                "pear", "pepper", "pineapple", "pumpkin", "potato"};
+
+        final String greetingString = "Я загадал слово из %d букв (%s), угадайте его %n";
+        final String winString = "Вы угадали!";
+        final String loseString = "Вы не угадали!";
+        final String noLettersString = "Таких букв в этом слове нет";
+        final String someLettersString = "Но вот такие буквы в этом слове есть: %s %n";
+
+        String word = words[new Random().nextInt(words.length - 1)];
+        Scanner input = new Scanner(System.in);
+        String choice;
+
+        System.out.printf(greetingString, word.length(), word);
+
+        do {
+            choice = input.next();
+            char[] letterMap = new char[word.length()];
+
+            if (!word.equals(choice)) {
+                System.out.println(loseString);
+
+                for (int i = 0; i < word.length(); i++) {
+                    for (int j = 0; j < choice.length(); j++) {
+                        if (word.charAt(i) == choice.charAt(j)) {
+                            letterMap[i] = word.charAt(i);
+                            break;
+                        } else {
+                            letterMap[i] = '#';
+                        }
+                    }
+                }
+
+                StringBuilder sb = new StringBuilder(new String(letterMap));
+                sb.append("#".repeat(15 - word.length()));
+
+                //проверка, угадали ли мы хоть что-нибудь или все состоит их "#"
+                if (!sb.toString().matches("[#]+")) {
+                    System.out.printf(someLettersString, sb.toString());
+                } else {
                     System.out.println(noLettersString);
                 }
 
