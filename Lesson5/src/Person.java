@@ -19,12 +19,12 @@ class Person {
     public void printInfo() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("ФИО: " + this.fio + "\n");
-        sb.append("Должность: " + this.title + "\n");
-        sb.append("E-mail: " + this.email + "\n");
-        sb.append("Телефон: " + this.phone + "\n");
-        sb.append("Оклад: " + this.salary + "\n");
-        sb.append("Возраст: " + this.age + "\n");
+        sb.append(String.format("ФИО: %s\n", this.fio));
+        sb.append(String.format("Должность: %s\n", this.title));
+        sb.append(String.format("E-mail: %s\n", this.email));
+        sb.append(String.format("Телефон: %s\n", this.phone));
+        sb.append(String.format("Оклад: %d\n", this.salary));
+        sb.append(String.format("Возраст: %d\n", this.age));
 
         System.out.println(sb.toString());
     }
