@@ -10,13 +10,13 @@ class MiniMax {
     static Move findBestMove(char[][] map) {
         int bestVal = -1000;
         Move bestMove = new Move();
-        bestMove.row = -1;
-        bestMove.col = -1;
+        bestMove.row = 0;
+        bestMove.col = 0;
 
         for (int i = 0; i < XO.SIZE; i++) {
             for (int j = 0; j < XO.SIZE; j++) {
                 if (map[i][j] == XO.DOT_EMPTY) {
-                    map[i][j] = player;
+                    map[i][j] = ai;
                     int moveVal = minimax(map, 0, false);
                     map[i][j] = XO.DOT_EMPTY;
 
@@ -62,7 +62,7 @@ class MiniMax {
             for (int i = 0; i < XO.SIZE; i++) {
                 for (int j = 0; j < XO.SIZE; j++) {
                     if (map[i][j] == XO.DOT_EMPTY) {
-                        map[i][j] = ai;
+                        map[i][j] = player;
                         best = Math.min(best, minimax(map, depth + 1, true));
                         map[i][j] = XO.DOT_EMPTY;
                     }
