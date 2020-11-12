@@ -1,9 +1,10 @@
 public class Bowl {
 
     private int amount;
+    private final int maximum;
 
     public Bowl(int v) {
-        this.amount = v;
+        amount = maximum = v;
     }
 
     public int getAmount() {
@@ -16,6 +17,6 @@ public class Bowl {
 
     //п.2 пересекается с п.4. в коте.
     public void setAmount(int amount) {
-        this.amount = Math.max(amount, 0);
+        this.amount =  (amount > 0 ) ? amount : maximum;
     }
 }
