@@ -1,11 +1,8 @@
-//* Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст;
 class Person {
 
     public String fio, title, email, phone;
     public int salary, age;
 
-
-    //* Конструктор класса должен заполнять эти поля при создании объекта;
     public Person(String fio, String title, String email, String phone, int salary, int age) {
         this.fio = fio;
         this.title = title;
@@ -15,7 +12,6 @@ class Person {
         this.age = age;
     }
 
-    //* Внутри класса «Сотрудник» написать метод, который выводит информацию об объекте в консоль;
     public void printInfo() {
 
         StringBuilder sb = new StringBuilder();

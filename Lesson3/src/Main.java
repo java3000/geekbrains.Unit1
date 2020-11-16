@@ -1,37 +1,13 @@
-import java.awt.*;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
-    //1. Написать программу, которая загадывает случайное число от 0 до 9,
-    // и пользователю дается 3 попытки угадать это число.
-    // При каждой попытке компьютер должен сообщить больше ли указанное пользователем число чем загаданное,
-    // или меньше. После победы или проигрыша выводится запрос –
-    // «Повторить игру еще раз? 1 – да / 0 – нет»(1 – повторить, 0 – нет).
-
-    //2 * Создать массив из слов String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado",
-    // "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut",
-    // "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
-    //При запуске программы компьютер загадывает слово, запрашивает ответ у пользователя,
-    //сравнивает его с загаданным словом и сообщает правильно ли ответил пользователь.
-    // Если слово не угадано, компьютер показывает буквы которые стоят на своих местах.
-
-    //apple – загаданное
-    //apricot - ответ игрока
-    //ap############# (15 символов, чтобы пользователь не мог узнать длину слова)
-    //Для сравнения двух слов посимвольно, можно пользоваться:
-    //String str = "apple";
-    //str.charAt(0); - метод, вернет char, который стоит в слове str на первой позиции
-    //Играем до тех пор, пока игрок не отгадает слово
-    //Используем только маленькие буквы
-
     public static void main(String[] args) {
-        //выбор игры
+
         System.out.println("В какую игру сыграем в этот раз? (1 - числа | 2 - слова)");
         Scanner choice = new Scanner(System.in);
 
-        //запустить игру
         switch (choice.nextInt()) {
             case 1 -> {
                 startGuessNumberGame(10, 3);
@@ -113,8 +89,6 @@ public class Main {
 
                 StringBuilder sb = new StringBuilder();
 
-                //сравниваем слова. Точно по месту расположения символов
-                //...при этом есть смысл сравнивать буквы только по наименьшему из слов.
                 int counter = Math.min(word.length(), choice.length());
 
                 for (int i = 0; i < counter; i++) {
@@ -125,10 +99,8 @@ public class Main {
                     }
                 }
 
-                //дополняем строку для секретности
                 sb.append("#".repeat(15 - word.length()));
 
-                //проверка, угадали ли мы хоть что-нибудь или все состоит их "#"
                 if (!sb.toString().matches("[#]+")) {
                     System.out.printf(someLettersString, sb.toString());
                 } else {
@@ -184,7 +156,6 @@ public class Main {
                 StringBuilder sb = new StringBuilder(new String(letterMap));
                 sb.append("#".repeat(15 - word.length()));
 
-                //проверка, угадали ли мы хоть что-нибудь или все состоит их "#"
                 if (!sb.toString().matches("[#]+")) {
                     System.out.printf(someLettersString, sb.toString());
                 } else {

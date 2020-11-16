@@ -2,12 +2,6 @@ import java.util.Random;
 
 public class Cat extends Animal {
 
-    //константы одинаковы для всех кошек, поэтому статичны и финальны
-    //более того, есть и в коде класса String:
-    //** use serialVersionUID from JDK 1.0.2 for interoperability */
-    //    @java.io.Serial
-    //    private static final long serialVersionUID = -6849794470754667710L;
-
     private static final int RUN_UPPER_BOUND = 200;
     private static final float JUMP_UPPER_BOUND = 2.0f;
     private static final int SWIM_UPPER_BOUND = 0;

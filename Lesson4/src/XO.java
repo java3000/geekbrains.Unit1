@@ -81,8 +81,8 @@ public class XO {
         int x, y;
         do {
             System.out.println("Введите координаты ячейки (X Y) oт 1 до " + SIZE);
-            y = scanner.nextInt() - 1; // Считывание номера строки
-            x = scanner.nextInt() - 1; // Считывание номера столбца
+            y = scanner.nextInt() - 1;
+            x = scanner.nextInt() - 1;
         }
         while (!isCellValid(x, y));
 
@@ -132,7 +132,6 @@ public class XO {
             if (count == SIZE) return true;
         }
 
-        //диагонали
         for (int row = 0; row < SIZE; row++) {
             int count = 0;
             for (int i = 0; i < SIZE; i++) {
