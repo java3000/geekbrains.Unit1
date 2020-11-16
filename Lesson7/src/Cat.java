@@ -7,9 +7,6 @@ public class Cat extends Animal {
     private static final int SWIM_UPPER_BOUND = 0;
 
     private final int foodAmount;
-
-    //3. Каждому коту нужно добавить поле сытость (когда создаем котов, они голодны).
-    // Если коту удалось покушать (хватило еды), сытость = true
     private boolean fullness;
 
     public Cat() {
@@ -19,7 +16,7 @@ public class Cat extends Animal {
     private Cat(int runLimit, float jumpLimit, int swimLimit) {
         super(runLimit, jumpLimit, swimLimit);
         foodAmount = new Random().nextInt(10);
-        fullness = false; //коты...
+        fullness = false;
     }
 
     @Override
@@ -42,8 +39,6 @@ public class Cat extends Animal {
     }
 
     public boolean eat(Bowl bowl) {
-        //4. Считаем, что если коту мало еды в тарелке, то он ее просто не трогает,
-        // то есть не может быть наполовину сыт (это сделано для упрощения логики программы)
         if (bowl.getAmount() < this.foodAmount) return false;
 
         bowl.setAmount(bowl.getAmount() - this.foodAmount);
